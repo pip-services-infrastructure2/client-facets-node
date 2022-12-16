@@ -6,7 +6,7 @@ import { ConsoleLogger } from 'pip-services3-components-nodex';
 import { FacetsMemoryPersistence } from 'service-facets-node';
 import { FacetsController } from 'service-facets-node';
 import { FacetsHttpServiceV1 } from 'service-facets-node';
-import { FacetsHttpClientV1 } from '../../src/version1/FacetsHttpClientV1';
+import { FacetsCommandableHttpClientV1 } from '../../src/version1/FacetsCommandableHttpClientV1';
 import { FacetsClientFixtureV1 } from './FacetsClientFixtureV1';
 
 var httpConfig = ConfigParams.fromTuples(
@@ -18,7 +18,7 @@ var httpConfig = ConfigParams.fromTuples(
 suite('FacetsHttpClientV1', ()=> {
     let persistence: FacetsMemoryPersistence;
     let service: FacetsHttpServiceV1;
-    let client: FacetsHttpClientV1;
+    let client: FacetsCommandableHttpClientV1;
     let fixture: FacetsClientFixtureV1;
 
     suiteSetup(async () => {
@@ -33,12 +33,12 @@ suite('FacetsHttpClientV1', ()=> {
             new Descriptor('pip-services', 'logger', 'console', 'default', '1.0'), logger,
             new Descriptor('service-facets', 'persistence', 'memory', 'default', '1.0'), persistence,
             new Descriptor('service-facets', 'controller', 'default', 'default', '1.0'), controller,
-            new Descriptor('service-facets', 'service', 'http', 'default', '1.0'), service
+            new Descriptor('service-facets', 'service', 'commndable-http', 'default', '1.0'), service
         );
         controller.setReferences(references);
         service.setReferences(references);
 
-        client = new FacetsHttpClientV1();
+        client = new FacetsCommandableHttpClientV1();
         client.setReferences(references);
         client.configure(httpConfig);
 

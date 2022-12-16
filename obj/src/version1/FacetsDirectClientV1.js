@@ -24,14 +24,13 @@ class FacetsDirectClientV1 extends pip_services3_rpc_nodex_1.DirectClient {
         return __awaiter(this, void 0, void 0, function* () {
             let timing = this.instrument(correlationId, 'facets.get_facets_by_group');
             try {
-                return yield this._controller.getFacetsByGroup(correlationId, group, paging);
+                let res = yield this._controller.getFacetsByGroup(correlationId, group, paging);
+                timing.endTiming();
+                return res;
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -39,14 +38,13 @@ class FacetsDirectClientV1 extends pip_services3_rpc_nodex_1.DirectClient {
         return __awaiter(this, void 0, void 0, function* () {
             let timing = this.instrument(correlationId, 'facets.add_facet');
             try {
-                return yield this._controller.addFacet(correlationId, group, name);
+                let res = yield this._controller.addFacet(correlationId, group, name);
+                timing.endTiming();
+                return res;
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -54,14 +52,13 @@ class FacetsDirectClientV1 extends pip_services3_rpc_nodex_1.DirectClient {
         return __awaiter(this, void 0, void 0, function* () {
             let timing = this.instrument(correlationId, 'facets.remove_facet');
             try {
-                return yield this._controller.removeFacet(correlationId, group, name);
+                let res = yield this._controller.removeFacet(correlationId, group, name);
+                timing.endTiming();
+                return res;
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -70,13 +67,11 @@ class FacetsDirectClientV1 extends pip_services3_rpc_nodex_1.DirectClient {
             let timing = this.instrument(correlationId, 'facets.delete_facats_by_group');
             try {
                 yield this._controller.deleteFacetsByGroup(correlationId, group);
+                timing.endTiming();
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -85,13 +80,11 @@ class FacetsDirectClientV1 extends pip_services3_rpc_nodex_1.DirectClient {
             let timing = this.instrument(correlationId, 'facets.clear');
             try {
                 yield this._controller.clear(correlationId);
+                timing.endTiming();
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }

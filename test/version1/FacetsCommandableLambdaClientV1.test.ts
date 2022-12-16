@@ -1,9 +1,9 @@
 import { ConfigParams } from 'pip-services3-commons-nodex';
 
 import { FacetsClientFixtureV1 } from './FacetsClientFixtureV1';
-import { FacetsLambdaClientV1 } from '../../src/version1/FacetsLambdaClientV1';
+import { FacetsCommandableLambdaClientV1 } from '../../src/version1/FacetsCommandableLambdaClientV1';
 
-suite('FacetsLambdaClient', ()=> {
+suite('FacetsCommandableLambdaClient', ()=> {
     let AWS_LAMDBA_ARN = process.env["AWS_LAMDBA_ARN"] || "";
     let AWS_ACCESS_ID = process.env["AWS_ACCESS_ID"] || "";
     let AWS_ACCESS_KEY = process.env["AWS_ACCESS_KEY"] || "";
@@ -24,11 +24,11 @@ suite('FacetsLambdaClient', ()=> {
     if (lambdaConfig.getAsNullableString("connection.protocol") != "aws")
         return;
 
-    let client: FacetsLambdaClientV1;
+    let client: FacetsCommandableLambdaClientV1;
     let fixture: FacetsClientFixtureV1;
 
     setup(async () => {
-        client = new FacetsLambdaClientV1();
+        client = new FacetsCommandableLambdaClientV1();
         client.configure(lambdaConfig);
 
         fixture = new FacetsClientFixtureV1(client);

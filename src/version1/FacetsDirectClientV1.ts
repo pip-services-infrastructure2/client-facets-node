@@ -5,7 +5,6 @@ import { PagingParams } from 'pip-services3-commons-nodex';
 import { DataPage } from 'pip-services3-commons-nodex';
 
 import { IFacetsClientV1 } from './IFacetsClientV1';
-//import { IFacetsController } from 'service-facets-node';
 import { FacetV1 } from './FacetV1';
 
 export class FacetsDirectClientV1 extends DirectClient<any> implements IFacetsClientV1 {
@@ -21,12 +20,12 @@ export class FacetsDirectClientV1 extends DirectClient<any> implements IFacetsCl
     public async getFacetsByGroup(correlationId: string, group: string, paging: PagingParams): Promise<DataPage<FacetV1>> {
         let timing = this.instrument(correlationId, 'facets.get_facets_by_group');
         try {
-            return await this._controller.getFacetsByGroup(correlationId, group, paging);
+            let res = await this._controller.getFacetsByGroup(correlationId, group, paging);
+            timing.endTiming();
+            return res;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -34,12 +33,12 @@ export class FacetsDirectClientV1 extends DirectClient<any> implements IFacetsCl
         let timing = this.instrument(correlationId, 'facets.add_facet');
         
         try {
-            return await this._controller.addFacet(correlationId, group, name);
+            let res = await this._controller.addFacet(correlationId, group, name);
+            timing.endTiming();
+            return res;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -47,12 +46,12 @@ export class FacetsDirectClientV1 extends DirectClient<any> implements IFacetsCl
         let timing = this.instrument(correlationId, 'facets.remove_facet');
         
         try {
-            return await this._controller.removeFacet(correlationId, group, name);
+            let res = await this._controller.removeFacet(correlationId, group, name);
+            timing.endTiming();
+            return res;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -61,11 +60,10 @@ export class FacetsDirectClientV1 extends DirectClient<any> implements IFacetsCl
         
         try {
             await this._controller.deleteFacetsByGroup(correlationId, group);
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -74,12 +72,10 @@ export class FacetsDirectClientV1 extends DirectClient<any> implements IFacetsCl
         
         try {
             await this._controller.clear(correlationId);
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
-
 }
