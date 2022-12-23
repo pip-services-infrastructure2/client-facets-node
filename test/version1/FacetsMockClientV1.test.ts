@@ -1,12 +1,12 @@
-import { FacetsMemoryClientV1 } from '../../src/version1/FacetsMemoryClientV1';
+import { FacetsMockClientV1 } from '../../src/version1/FacetsMockClientV1';
 import { FacetsClientFixtureV1 } from './FacetsClientFixtureV1';
 
-suite('FacetsMemoryClientV1', ()=> {
-    let client: FacetsMemoryClientV1;
+suite('FacetsMockClientV1', ()=> {
+    let client: FacetsMockClientV1;
     let fixture: FacetsClientFixtureV1;
 
     suiteSetup(() => {
-        client = new FacetsMemoryClientV1();
+        client = new FacetsMockClientV1();
         fixture = new FacetsClientFixtureV1(client);
     });
     

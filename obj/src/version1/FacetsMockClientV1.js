@@ -9,11 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FacetsMemoryClientV1 = void 0;
+exports.FacetsMockClientV1 = void 0;
 const pip_services3_commons_nodex_1 = require("pip-services3-commons-nodex");
 const pip_services3_commons_nodex_2 = require("pip-services3-commons-nodex");
 const FacetV1_1 = require("./FacetV1");
-class FacetsMemoryClientV1 {
+class FacetsMockClientV1 {
     constructor() {
         this._maxPageSize = 100;
         this._items = [];
@@ -72,5 +72,5 @@ class FacetsMemoryClientV1 {
         });
     }
 }
-exports.FacetsMemoryClientV1 = FacetsMemoryClientV1;
-//# sourceMappingURL=FacetsMemoryClientV1.js.map
+exports.FacetsMockClientV1 = FacetsMockClientV1;
+//# sourceMappingURL=FacetsMockClientV1.js.map

@@ -5,7 +5,7 @@ import { IFacetsClientV1 } from './IFacetsClientV1';
 
 import { FacetV1 } from './FacetV1';
 
-export class FacetsMemoryClientV1 implements IFacetsClientV1 {
+export class FacetsMockClientV1 implements IFacetsClientV1 {
     protected _maxPageSize: number = 100;
     private _items: FacetV1[] = [];
 
